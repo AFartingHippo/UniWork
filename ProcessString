@@ -1,0 +1,80 @@
+/**This program uses lots of different methods to edit and chage a strings.
+ * Charlie Cross, i7432987
+ * 17/12/2015
+ * Programming Wk21.2
+ */
+
+public class ProcessString {
+
+	public static void main(String[] args) {
+		ProcessString method = new ProcessString(); //Makes an object of the class to be used for calling methods
+		String ProcessString = "HelloWorld"; 
+		String ProcessString2 = " and GoodBye World";
+		
+		method.LowerCase(ProcessString); //The calls for each method
+		method.UpperCase(ProcessString);
+		method.ReverseText(ProcessString);
+		method.PutTogether(ProcessString, ProcessString2);
+		method.CharacterCount(ProcessString);
+		method.SpecifiedLetter(ProcessString);
+		method.ReplaceLetters(ProcessString, "o", "i");
+	}
+	
+	public void LowerCase(String ProcessString) //This method displays the ProcessString in lowercase
+	{
+		System.out.println(ProcessString.toLowerCase());
+	}
+	public void UpperCase(String ProcessString) //This method displays the ProcessString in UpperCase
+	{
+		System.out.println(ProcessString.toUpperCase());
+	}
+	public void ReverseText(String ProcessString) //This method displays the ProcessString in reverse
+	{
+		System.out.println(new StringBuilder(ProcessString).reverse().toString());
+	}
+	public void PutTogether(String ProcessString, String ProcessString2) //This method displays the ProcessString and ProcessString2 together
+	{
+		System.out.println(ProcessString + ProcessString2);
+	}
+	public void CharacterCount(String ProcessString) //This method displays the length of the ProcessString 
+	{
+		int Length = ProcessString.length(); //Gets the lenth of the string
+		System.out.println(ProcessString + " has a legnth of " + Length);
+	}
+	public void SpecifiedLetter(String ProcessString) //This method takes the ProcessString and counts how many o's are in it
+	{
+		int Length = ProcessString.length(); //Finds the length of ProcessString for the for loop
+		int Count = 0;
+		char Character;
+		for (int i = 0; i < Length; i++) 
+		{
+			Character = ProcessString.charAt(i); //Puts the current selected character into Character
+			if (Character == 'o' || Character == 'O')
+			{
+				Count++;
+			}
+		}
+		System.out.println("There are " + Count + " o's in the string " + ProcessString);
+	}
+	//This method takes the ProcessString and changed changes the o characters to i characters
+	public void ReplaceLetters(String ProcessString, String FirstChara, String SecondChara) 
+	{
+		String StringChara = "";
+		String FinalString = "";
+		int Length = ProcessString.length(); //Finds the length of the ProcessString for the for loop
+		for (int i = 0; i < Length; i++) 
+		{
+			StringChara = Character.toString(ProcessString.charAt(i)); //Puts the current selected character of ProcessString into StringChara
+			if (StringChara.equalsIgnoreCase(FirstChara)) //If string StringCharacter is equal to o it change StringChara to i then add it to FinalString
+			{
+				StringChara = SecondChara;
+				FinalString = FinalString + StringChara;
+			}
+			else //Else it will just add the current character to Finalstring
+			{
+				FinalString = FinalString + StringChara;
+			}
+		}
+		System.out.println("The inputted string was: " + ProcessString + ". The new string with the letter o replaced with i is: " + FinalString);
+	}
+}
