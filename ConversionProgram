@@ -1,0 +1,115 @@
+/**This program takes in number from the user to convert them from pounds into a different currency.
+ * Charlie Cross, i7432987
+ * 17/12/2015
+ * Programming Wk21.3
+ */
+
+import java.text.DecimalFormat; //imports to be used
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ConversionProgram {
+	
+	public static ArrayList<Double> Numbers = new ArrayList<Double>(); //Creates an array list to be used throughout the whole program
+	public static Scanner scan = new Scanner(System.in); //Creates a scanner object to be used
+	public static DecimalFormat DoubleRound = new DecimalFormat("##.00"); //Creates a public DecialFormat to round doubles to the write format
+	
+	public static void main(String[] args) {
+		ConversionProgram method = new ConversionProgram(); //Makes an object of the class used to call methods
+		
+		int Choice = 0;
+		while(Choice != 6) //While loop that allows the user to keep selecting multiple options
+		{
+			System.out.println("\n1.  Enter values\n"
+							 + "2.  Euros\n"
+							 + "3.  Dollars\n"
+							 + "4.  Yen\n"
+							 + "5.  Rupees\n"
+							 + "6.  Exit");
+			Choice = scan.nextInt();
+			
+			switch (Choice) //Switch statement to easily select what the user wants to do
+			{
+				case 1: method.AddNumbers();
+					break;
+				case 2: method.Euros();
+					break;
+				case 3: method.Dollars();
+					break;
+				case 4: method.Yen();
+					break;
+				case 5: method.Rupees();
+					break;
+				case 6: System.out.println("Thank you for using the program. Have a good day!");
+					break;
+			}
+		}
+	}
+	
+	public void AddNumbers() //This method allows users to add numbers to the arraylist
+	{
+		double CurrentNumber = 0;
+		System.out.print("Enter different numbers in pound, when finished type -1");
+		while(CurrentNumber != -1) //Loop allows user to add multiple numbers to the arraylist
+		{
+			CurrentNumber = scan.nextDouble();
+			if (CurrentNumber == -1){ } //If the user enters -1 I don't want the program to add anything to the arraylist so it skips over the code.
+			else
+			{
+				Numbers.add(CurrentNumber);
+			}
+		}
+	}
+	public void Euros() //This method displays all the numbers entered in the array list in euros
+	{
+		System.out.print("The number values you entered in euros would be: ");
+		int ArraySize = Numbers.size(); //Gets the size of the arraylist and puts it to an int to be used for the for loop
+		double ConvertNumber = 0;
+		
+		for (int i = 0; i < ArraySize; i++) //For loop displays all the different numbers in the array list
+		{
+			ConvertNumber = Numbers.get(i);
+			ConvertNumber = ConvertNumber * 1.34; //Converts the number for euros
+			System.out.print(DoubleRound.format(ConvertNumber) + ", ");
+		}
+	}
+	public void Dollars() //This method displays all the numbers entered in the array list in dollars
+	{
+		System.out.print("The number values you entered in dollars would be: ");
+		int ArraySize = Numbers.size(); //Gets the size of the arraylist and puts it to an int to be used for the for loop
+		double ConvertNumber = 0;
+		
+		for (int i = 0; i < ArraySize; i++) //For loop displays all the different numbers in the array list
+		{
+			ConvertNumber = Numbers.get(i);
+			ConvertNumber = ConvertNumber * 1.46; //Converts the number for dollars
+			System.out.print(DoubleRound.format(ConvertNumber) + ", ");
+		}
+	}
+	public void Yen() //This method displays all the numbers entered in the array list in Yen
+	{
+		System.out.print("The number values you entered in Yen would be: ");
+		int ArraySize = Numbers.size(); //Gets the size of the arraylist and puts it to an int to be used for the for loop
+		double ConvertNumber = 0;
+		
+		for (int i = 0; i < ArraySize; i++) //For loop displays all the different numbers in the array list
+		{
+			ConvertNumber = Numbers.get(i);
+			ConvertNumber = ConvertNumber * 171.93; //Converts the numbers for Yen
+			System.out.print(DoubleRound.format(ConvertNumber) + ", ");
+		}
+	}
+	public void Rupees() //This method displays all the numbers entered in the array list in Rupees
+	{
+		System.out.print("The number values you entered in Rupees would be: ");
+		int ArraySize = Numbers.size(); //Gets the size of the arraylist and puts it to an int to be used for the for loop
+		double ConvertNumber = 0;
+		
+		for (int i = 0; i < ArraySize; i++) //For loop displays all the different numbers in the array list
+		{
+			ConvertNumber = Numbers.get(i);
+			ConvertNumber = ConvertNumber * 97.75; //Converts the numbers for Rupee
+			System.out.print(DoubleRound.format(ConvertNumber) + ", ");
+		}
+	}
+}
